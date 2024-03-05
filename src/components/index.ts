@@ -1,2 +1,2 @@
-export * from '@/components/Inputs/input-text'
-export * from '@/components/Loadings/page-loading'
+export * from '@/components/inputs/input-text'
+export * from '@/components/loadings/page-loading'

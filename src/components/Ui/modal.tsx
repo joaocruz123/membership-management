@@ -1,14 +1,15 @@
 import { ReactNode } from 'react'
 
-interface ModalProps {
-  key: string;
+type ModalProps = {
+  id: string;
   title: string;
   content: ReactNode;
   open: boolean;
   actions: ReactNode;
-}
+};
+
 export default function Modal({
-  key,
+  id,
   title,
   content,
   open,
@@ -16,7 +17,7 @@ export default function Modal({
 }: ModalProps) {
   return (
     <dialog
-      id={key}
+      id={id}
       className={`modal modal-bottom sm:modal-middle ${
         open ? 'modal-open' : ''
       }`}
@@ -28,7 +29,6 @@ export default function Modal({
         <div className='divider'></div>
         <div className='modal-action'>
           <form method='dialog'>
-            {/* if there is a button in form, it will close the modal */}
             {actions}
           </form>
         </div>

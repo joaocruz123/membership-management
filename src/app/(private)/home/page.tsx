@@ -1,6 +1,6 @@
 'use client'
 
-import { useAuthStore } from '@/store/useAuthStore'
+import { useAuthStore } from '@/infra/store/useAuthStore'
 
 export default function HomePage() {
   const user = useAuthStore(state => state.auth)

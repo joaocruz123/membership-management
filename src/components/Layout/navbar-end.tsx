@@ -1,6 +1,6 @@
-import { useAuthStore } from '@/store/useAuthStore'
+import { useAuthStore } from '@/infra/store/useAuthStore'
 import { FaSignOutAlt, FaSearch } from 'react-icons/fa'
-import Modal from '../Ui/modal'
+import Modal from '../ui/modal'
 import { useState } from 'react'
 
 export default function NavbarEnd() {
@@ -34,7 +34,7 @@ export default function NavbarEnd() {
         </div>
       </div>
       <Modal
-        key='logoff'
+        id={'singout-modal'}
         title='Sair'
         content={
           <span>

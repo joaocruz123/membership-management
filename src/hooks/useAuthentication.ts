@@ -1,6 +1,8 @@
-import axiosPublicInstance from '@/infra/http/axiosPublicInstance'
+
+import { AuthenticationUseCase } from '@/data/useCases/authUseCases/authentication.usecase'
+import { AxiosHttpClient } from '@/infra/http/axios-http-client'
+import { useAuthStore } from '@/infra/store/useAuthStore'
 import { FormAuthenticationInterface } from '@/interfaces/auth'
-import { useAuthStore } from '@/store/useAuthStore'
 import { useMutation } from 'react-query'
 
 export function useIsAuthenticated(userToken: string | undefined) {
@@ -8,18 +10,18 @@ export function useIsAuthenticated(userToken: string | undefined) {
     else return false
 }
 
-const singin = async (credentials: FormAuthenticationInterface) => {
-    const url = `/api/auth/login`
-    return await axiosPublicInstance.post(url, credentials)
+const singIn = async (credentials: FormAuthenticationInterface) => {
+    const authUseCase = new AuthenticationUseCase(new AxiosHttpClient())
+    return authUseCase.singin(credentials)
 }
 
 export function useLogin() {
     const setAuthentication = useAuthStore(state => state.setAuthentication)
 
     const mutate = useMutation({
-        mutationFn: singin,
+        mutationFn: singIn,
         onSuccess: result => {
-            setAuthentication(result.data)
+            setAuthentication(result)
         }
     })
 

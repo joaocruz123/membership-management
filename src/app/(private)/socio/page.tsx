@@ -1,10 +1,32 @@
+'use client'
+import Pagination from '@/components/ui/pagination'
+import { redirect, useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 
 export default function PartnerPage() {
+  const route = useRouter()
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [currentTotalPages, setCurrentTotalPages] = useState<number>(1)
+  const [currentTotalResults, setCurrentTotalResults] = useState<number>(1)
+
+  const handlePageChange = (page: number): void => {
+    //setLoading(true)
+    setCurrentPage(page)
+
+    // if (favorites && favorites.length > 0) {
+    //   getMovieByGenre(favorites, page)
+    // } else {
+    //   getAllMovies(page).then(() => setLoading(false))
+    // }
+  }
   return (
     <div className='overflow-x-auto'>
       <div className='flex flex-row justify-end mb-4'>
-        <button className='btn btn-primary'>
+        <button
+          className='btn btn-secondary btn-outline btn-sm'
+          onClick={() => route.push('socio/novo')}
+        >
           <FaPlus />
           Cadastrar novo
         </button>
@@ -175,6 +197,44 @@ export default function PartnerPage() {
           </tr>
         </tfoot>
       </table>
+
+      <Pagination
+        onPageChange={handlePageChange}
+        totalCount={currentTotalResults}
+        siblingCount={1}
+        currentPage={currentPage}
+        pageSize={currentTotalPages}
+        className='mb-10'
+      />
+      {/* <div className='flex flex-row justify-end mb-4'>
+        <div className='join'>
+          <input
+            className='join-item btn btn-sm btn-square'
+            type='radio'
+            name='options'
+            aria-label='1'
+            checked
+          />
+          <input
+            className='join-item btn btn-sm btn-square'
+            type='radio'
+            name='options'
+            aria-label='2'
+          />
+          <input
+            className='join-item btn btn-sm btn-square'
+            type='radio'
+            name='options'
+            aria-label='3'
+          />
+          <input
+            className='join-item btn btn-sm btn-square'
+            type='radio'
+            name='options'
+            aria-label='4'
+          />
+        </div>
+      </div> */}
     </div>
   )
 }

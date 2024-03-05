@@ -54,6 +54,11 @@ export default function Navibar() {
           />
           Membership Management
         </a>
+        <input
+          type='checkbox'
+          value='cupcake'
+          className='checkbox theme-controller'
+        />
       </div>
       <div className='navbar-center hidden lg:flex'>
         <ul className='menu menu-horizontal px-1'>

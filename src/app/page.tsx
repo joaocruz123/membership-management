@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import styles from './page.module.css'
 import { Loading } from '@/components'
 import { redirect } from 'next/navigation'
-import { useAuthStore } from '@/store/useAuthStore'
+import { useAuthStore } from '@/infra/store/useAuthStore'
 import { useIsAuthenticated } from '@/hooks/useAuthentication'
 
 export default function Home() {
