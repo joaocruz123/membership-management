@@ -3,17 +3,17 @@ import axios from 'axios'
 export const axiosPrivateInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_PATH_URI,
   headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json'
   }
 })
 
 export const getBearerToken = () => {
   const sessionRoot = JSON.parse(
-    window.sessionStorage.getItem('persist:root') || '{}'
+    window.sessionStorage.getItem('auth') || '{}'
   )
-
-  const sessionUser = JSON.parse(sessionRoot.auth || '{}')
-  return `Bearer ${sessionUser?.auth?.accessToken}`
+  const sessionUser = sessionRoot.state.auth || '{}'
+  return `Bearer ${sessionUser?.access_token}`
 }
 
 axiosPrivateInstance.interceptors.request.use(

@@ -12,3 +12,7 @@ export type Params = {
 export interface IHttpClient<TData = any> {
     request(params: Params): Promise<HttpResponse<TData>>;
 }
+
+export interface IHttpPrivateClient<TData = any> {
+    request(params: Params): Promise<HttpResponse<TData>>;
+}

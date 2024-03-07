@@ -1,13 +1,13 @@
 import { create } from 'zustand'
-import { AuthenticationUser } from '@/interfaces/auth'
 import { persist, createJSONStorage } from 'zustand/middleware'
+import { IAuthModel } from '@/domain/models/auth.model'
 
 interface State {
-  auth: AuthenticationUser | null
+  auth: IAuthModel | null
 }
 
 interface Actions {
-  setAuthentication: (Item: AuthenticationUser) => void
+  setAuthentication: (Item: IAuthModel) => void
   logoff: () => void
 }
 
@@ -19,7 +19,7 @@ export const useAuthStore = create<State & Actions, [['zustand/persist', State]]
   persist(
     (set, get) => ({
       auth: initialState.auth,
-      setAuthentication: (dataAuth: AuthenticationUser) => {
+      setAuthentication: (dataAuth: IAuthModel) => {
         set(() => ({
           auth: dataAuth
         }))

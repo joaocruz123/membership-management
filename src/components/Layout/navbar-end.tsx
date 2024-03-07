@@ -16,7 +16,7 @@ export default function NavbarEnd() {
   return (
     <>
       <div className='navbar-end'>
-      <div className='tooltip tooltip-bottom' data-tip='Buscar'>
+        <div className='tooltip tooltip-bottom' data-tip='Buscar'>
           <button
             className='btn bg-transparent border-0 text-lg'
             onClick={() => {}}
