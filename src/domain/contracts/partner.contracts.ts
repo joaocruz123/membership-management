@@ -1,5 +1,6 @@
-import { IPartnerResponse } from '../models/partner.model'
+import { IPartnersParams } from '@/interfaces/partners'
+import { IPartnersResponse } from '../models/partner.model'
 
 export interface IPartnerCrontract{
-    getAllPartner(): Promise<IPartnerResponse>
+    getAllPartner(params: IPartnersParams): Promise<IPartnersResponse>
 }

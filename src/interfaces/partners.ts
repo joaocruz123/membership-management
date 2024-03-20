@@ -19,3 +19,8 @@ export interface FormPartnerInterface {
     companyAddress?: string | null;
     status: boolean
 }
+
+export type IPartnersParams = {
+    currentPage: number,
+    perPage: number
+}

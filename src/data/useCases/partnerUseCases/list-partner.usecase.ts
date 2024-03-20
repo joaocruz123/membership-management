@@ -1,16 +1,21 @@
+import { mapAllPartners } from '@/data/dto/partnersDTO'
 import { IPartnerCrontract } from '@/domain/contracts/partner.contracts'
-import { IPartnerModel, IPartnerResponse } from '@/domain/models/partner.model'
+import { IPartnersResponse } from '@/domain/models/partner.model'
 import { IHttpPrivateClient } from '@/interfaces/http-client'
+import { IPartnersParams } from '@/interfaces/partners'
 
 export class PartnerListUseCase implements IPartnerCrontract {
-    constructor(private readonly httpPrivateClient: IHttpPrivateClient<IPartnerResponse>) { }
-    async getAllPartner(): Promise<IPartnerResponse> {
-        const url = `/api/partners?page=1&limit=10`
+    constructor(private readonly httpPrivateClient: IHttpPrivateClient<IPartnersResponse>) { }
+    async getAllPartner(params: IPartnersParams): Promise<IPartnersResponse> {
+        const { currentPage, perPage } = params
+
+        const url = `/api/partners?page=${currentPage}&limit=${perPage}`
         const { data } = await this.httpPrivateClient.request({
             method: 'GET',
             url: url
         })
 
-        return data
+        const result = mapAllPartners(data)
+        return result
     }
 }

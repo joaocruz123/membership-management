@@ -1,6 +1,6 @@
 
 import { AuthenticationUseCase } from '@/data/useCases/authUseCases/authentication.usecase'
-import { AxiosHttpClient } from '@/infra/http/axios-http-client'
+import { AxiosPublicHttpClient } from '@/infra/http/axiosPublicAdapter'
 import { useAuthStore } from '@/infra/store/useAuthStore'
 import { FormAuthenticationInterface } from '@/interfaces/auth'
 import { useMutation } from 'react-query'
@@ -11,7 +11,7 @@ export function useIsAuthenticated(userToken: string | undefined) {
 }
 
 const singIn = async (credentials: FormAuthenticationInterface) => {
-    const authUseCase = new AuthenticationUseCase(new AxiosHttpClient())
+    const authUseCase = new AuthenticationUseCase(new AxiosPublicHttpClient())
     return authUseCase.singin(credentials)
 }
 

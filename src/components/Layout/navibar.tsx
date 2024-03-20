@@ -1,8 +1,12 @@
+'use client'
 import Logo from '@/assets/partner-logo-no-text.png'
 import Image from 'next/image'
 import NavbarEnd from './navbar-end'
+import { useConfigurationStore } from '@/infra/store/useConfigurationStore'
 
 export default function Navibar() {
+  const setTheme = useConfigurationStore(state => state.setTheme)
+
   return (
     <div className='navbar bg-base-100 px-4 pt-4 mb-4'>
       <div className='navbar-start'>
@@ -58,6 +62,7 @@ export default function Navibar() {
           type='checkbox'
           value='cupcake'
           className='checkbox theme-controller'
+          onClick={() => setTheme('cupcake')}
         />
       </div>
       <div className='navbar-center hidden lg:flex'>

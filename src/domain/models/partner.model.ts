@@ -21,7 +21,27 @@ export interface IPartnerModel {
     status: boolean
 }
 
+export interface IParcialPartnerModel {
+    id: string;
+    name: string;
+    rg: string;
+    cpf: string;
+    company: string;
+    status: boolean
+}
 
-export interface IPartnerResponse {
-    data: IPartnerModel[]
+export interface IMeta {
+    itemsPerPage: number;
+    totalItems: number;
+    currentPage: number;
+    totalPages: number;
+    sortBy: Array<any>
+}
+
+export interface IPartnersResponse {
+    data: IParcialPartnerModel[]
+    link: {
+        current: string
+    }
+    meta: IMeta
 }

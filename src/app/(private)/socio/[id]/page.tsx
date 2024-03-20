@@ -68,7 +68,7 @@ export default function EditCreatePartnerPage() {
           </h1>
           <button
           type='button'
-            className='btn btn-secondary btn-sm btn-outline'
+            className='btn btn-secondary btn-outline'
             onClick={() => route.push('/socio')}
           >
             <FaArrowLeft />
@@ -243,7 +243,7 @@ export default function EditCreatePartnerPage() {
               disabled={isLoading}
             >
               {isLoading && <span className='loading loading-spinner'></span>}
-              Entrar
+              Salvar
             </button>
           </div>
         </div>
